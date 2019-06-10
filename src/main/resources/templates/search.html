@@ -38,10 +38,18 @@
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
 
-    <div>
-        <ul>
-            <li th:each="job : ${jobs}">${job.value}</li>
-        </ul>
+
+    <div th:if="${jobs} and ${jobs.size() > 0 }"> <!-- if jobs not null AND not empty -->
+
+        <table th:each="job : ${jobs}" th:class="job-listing"> <!-- Add CSS class "job-listing" to tables to get styling, courtesy of Eliot's work! -->
+
+            <tr th:each="component, index : ${job}" > <!-- Nest loop to go through items in each job -->
+                <td th:text="${#strings.capitalizeWords(component.key)}"></td> <!-- Column 1 of 2 -->
+                <td th:text="${component.value}"></td> <!-- Column 2 of 2 -->
+            </tr>
+        </table>
+        <br/>
+
     </div>
 
 </div>
