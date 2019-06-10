@@ -12,6 +12,8 @@
 
     <!-- TODO #3 - Use the same list display from search.html -->
 
+    <h3 th:text="${jobs.size()} + ' Result(s)'"></h3>
+
     <div th:if="${jobs} and ${jobs.size() > 0 }"> <!-- if jobs not null AND not empty -->
 
         <table th:each="job : ${jobs}" th:class="job-listing"> <!-- Add CSS class "job-listing" to tables to get styling, courtesy of Eliot's work! -->
